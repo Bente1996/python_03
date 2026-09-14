@@ -50,9 +50,10 @@ def basic_stats(score_list: list) -> None:
         i += 1
     print(f"Total score: {sum(int(score) for score in score_list)}")
     print(f"Average score: {total_score / len(score_list)}")
-    print(f"High score: {max(score_list)}") ## gaat mis
-    print(f"Low score: {float(min(score_list))}")
-    print(f"Score range: {int(max(score_list)) - int(min(score_list))}")
+    print(f"High score: {max([int(value) for value in score_list])}") ## gaat mis
+    print(f"Low score: {min([int(value) for value in score_list])}")
+    print(f"Score range: {max([int(value) for value in score_list]) -
+           min([int(value) for value in score_list])}")
 
 def test_score_analytics(scores: list) -> int:
     try:
@@ -69,17 +70,3 @@ def test_score_analytics(scores: list) -> int:
 if __name__ == "__main__":
     print("=== Player Score Analytics ===")
     test_score_analytics(sys.argv)
-
-#~/python_03/ex1 % ./ft_score_analytics.py 2 3 4 5 65785876 pluh 1234 meerpluh 8888 1  
-#=== Player Score Analytics ===
-#Caught ValueError: invalid literal for int() with base 10: 'pluh'
-#Caught ValueError: invalid literal for int() with base 10: 'meerpluh'
-#[2, 3, 4, 5, 65785876, 1234, 8888, 1]
-#Total players: 8
-#Total score: 65796013
-#Average score: 8224501.625
-#High score: 8888
-#Low score: 1.0
-#Score range: 8887
-#Finally :}
-
